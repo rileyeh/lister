@@ -59,7 +59,8 @@ module.exports = {
     },
     logout: (req, res) => {
         req.session.destroy()
-        res.sendStatus(200)
+        res.status(200).send()
+        // res.sendStatus(200)
     },
     currentUser: async (req, res) => {
         if (req.session.user) {

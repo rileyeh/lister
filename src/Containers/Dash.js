@@ -1,24 +1,17 @@
-import React, { useContext } from 'react'
-// import React, { useState, useEffect, useContext } from 'react'
-import { UserContext } from '../Context/user'
-import Test from './Test'
+import React from 'react'
+import { Redirect } from 'react-router-dom'
+import List from './List'
 
-const Dash = props => {
-    const { user, register, login } = useContext(UserContext)
-    const user1 = {
-        username: 'alex',
-        email: 'rileyehatch@gmail.com', 
-        password: '123'
-    }
-    console.log(user)
+const Dash = ({ user }) => {
+    if (!user) return <Redirect to='/'/>
+    let { user_id: id } = user
     return (
         <div>
-            <h1>dash</h1>
-            <button onClick={() => register(user1)} >register</button>
-            <button onClick={() => login(user1)}>login</button>
-            <Test />
-        </div>    
+            <h1>dash of {id}</h1>
+            <List />
+        </div>
     )
+
 }
 
 export default Dash

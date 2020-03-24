@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const massive = require('massive')
 const session = require('express-session')
+const authUser = require('./middlewares/authUser')
 
 let { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 let authCtrl = require('./controllers/authCtrl')
@@ -22,11 +23,14 @@ app.use(session({
     }
 }))
 
-//// Auth Endpoints ///
+/// Auth Endpoints ///
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
-app.get('/auth/logout', authCtrl.logout)
+app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/getuser', authCtrl.currentUser)
+
+/// List Endpoints ///
+app.get('/api/lists/:id', )
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))

@@ -1,43 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 const UserContext = React.createContext()
 
-const initialState = {
-    user: {}
-}
+const UserProvider = props => {
+    const [user, setUser] = useState({})
 
-export default class UserProvider extends React.Component {
-    state = initialState
+    const successCallback = ({ data: user }) => setUser({ user })
+    const errorCallback = err => console.log(`!!!error!!!`, err)
 
-    successCallback = ({ data: user }) => this.setState({ user })
-    errorCallback = err => console.log(`!!!error!!!`, err)
-
-    methods = {
+    const methods = {
         register: userInfo => {
             axios.post(`/auth/register`, userInfo)
-                .then(this.successCallback)
-                .catch(this.errorCallback)
+                .then(successCallback)
+                .catch(errorCallback)
         },
         login: userInfo => {
             axios.post(`/auth/login`, userInfo)
-                .then(this.successCallback)
-                .catch(this.errorCallback)
+                .then(successCallback)
+                .catch(errorCallback)
         },
         getUser: () => {
             axios.get(`/auth/getuser`)
-                .then(this.successCallback)
-                .catch(this.errorCallback)
+                .then(successCallback)
+                .catch(errorCallback)
+        },
+        logout: () => {
+            axios.delete('/auth/logout')
+                .then(successCallback)
+                .catch(errorCallback)
         }
     }
 
-    render() {
-        return (
-            <UserContext.Provider value={{ ...this.state, ...this.methods }}>
-                {this.props.children}
-            </UserContext.Provider>
-        )
-    }
+    return (
+        <UserContext.Provider value={{ ...user, ...methods }}>
+            {props.children}
+        </UserContext.Provider>
+    )
 }
 
+export default UserProvider
 export { UserContext, UserProvider }
