@@ -32,6 +32,7 @@ app.get('/auth/getuser', authCtrl.currentUser)
 
 /// List Endpoints ///
 app.get('/api/lists/:id', authUser, listCtrl.getListsByUser)
+app.get('/api/items/:id', authUser, listCtrl.getAllItemsByList)
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))

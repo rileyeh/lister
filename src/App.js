@@ -6,7 +6,7 @@ import Header from './Components/Header'
 import Home from './Components/Home'
 import Auth from './Containers/Auth'
 import Dash from './Containers/Dash'
-import List from './Components/List'
+import List from './Components/List/index'
 
 const App = () => {
   const { user, register, login, logout } = useContext(UserContext)
