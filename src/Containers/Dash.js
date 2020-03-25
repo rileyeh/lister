@@ -6,7 +6,7 @@ const Dash = ({ user }) => {
     return(
         <AuthWrapper>
             <div>
-                <h1>hey there it's a dashboard</h1>
+                <h1>welcome to your dashboard</h1>
                 <Lists user={user}/>
             </div>
         </AuthWrapper>

@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
+import Login from '../Components/Login'
+import Register from '../Components/Register'
 
 const Auth = ({ user, register, login}) => {
-    const user1 = {
-        username: 'riley',
-        email: 'rileyehatch@gmail.com', 
-        password: '123'
-    }
+    const [form, setForm] = useState('login')
+
     return user ? 
-    <Redirect to={`/dash/${user.user_id}`}/>
+    <Redirect to='/dash'/>
     :
     (
         <div>
             <h1>auth</h1>
-            <button onClick={() => register(user1)} >register</button>
-            <button onClick={() => login(user1)}>login</button>
+            {
+                form === 'login'
+                ?
+                <Login login={login} setForm={setForm}/>
+                :
+                <Register register={register} setForm={setForm}/>
+            }
         </div>    
     )
 }

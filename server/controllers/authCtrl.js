@@ -4,7 +4,7 @@ module.exports = {
     register: async (req, res) => {
         try {
             const db = req.app.get('db')
-            const { username, email, password } = req.body
+            const { username, password } = req.body
     
             let users = await db.auth.find_user_by_username(username)
             let user = users[0]
@@ -16,7 +16,7 @@ module.exports = {
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(password, salt)
     
-            let response = await db.auth.create_user({ username, email, hash })
+            let response = await db.auth.create_user({ username, hash })
             let newUser = response[0]
     
             delete newUser.password
