@@ -3,10 +3,11 @@ const express = require('express')
 const app = express()
 const massive = require('massive')
 const session = require('express-session')
-const authUser = require('./middlewares/authUser')
+const {authUser} = require('./middlewares/authUser')
 
 let { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 let authCtrl = require('./controllers/authCtrl')
+let listCtrl = require('./controllers/listCtrl')
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
@@ -30,7 +31,7 @@ app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/getuser', authCtrl.currentUser)
 
 /// List Endpoints ///
-app.get('/api/lists/:id', )
+app.get('/api/lists/:id', authUser, listCtrl.getListsByUser)
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))

@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 const Auth = ({ user, register, login}) => {
     const user1 = {
-        username: 'alex',
+        username: 'riley',
         email: 'rileyehatch@gmail.com', 
         password: '123'
     }

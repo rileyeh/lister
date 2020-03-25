@@ -1,17 +1,16 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
-import List from './List'
+import Lists from './Lists'
+import AuthWrapper from './AuthWrapper'
 
-const Dash = ({ user }) => {
-    if (!user) return <Redirect to='/'/>
-    let { user_id: id } = user
-    return (
-        <div>
-            <h1>dash of {id}</h1>
-            <List />
-        </div>
+const Dash = ({ user }) => {    
+    return(
+        <AuthWrapper>
+            <div>
+                <h1>hey there it's a dashboard</h1>
+                <Lists user={user}/>
+            </div>
+        </AuthWrapper>
     )
-
 }
 
 export default Dash

@@ -16,6 +16,7 @@ const UserProvider = props => {
                 .catch(errorCallback)
         },
         login: userInfo => {
+            console.log(user)
             axios.post(`/auth/login`, userInfo)
                 .then(successCallback)
                 .catch(errorCallback)
@@ -33,6 +34,7 @@ const UserProvider = props => {
     }
 
     return (
+        //at some point, i want to test what happens when you remove props.children?
         <UserContext.Provider value={{ ...user, ...methods }}>
             {props.children}
         </UserContext.Provider>

@@ -6,6 +6,7 @@ import Header from './Components/Header'
 import Home from './Components/Home'
 import Auth from './Containers/Auth'
 import Dash from './Containers/Dash'
+import List from './Components/List'
 
 const App = () => {
   const { user, register, login, logout } = useContext(UserContext)
@@ -14,6 +15,14 @@ const App = () => {
       <Header user={user} logout={logout}/>
       <Switch>
         <Route 
+          path='/list/:id'
+          component={List}/>
+        <Route 
+          path={`/dash`}
+          render={() => {
+            return <Dash user={user}/>
+          }}/>
+        <Route 
           path={`/login`}  
           render={() => {
             return <Auth 
@@ -21,11 +30,6 @@ const App = () => {
                     register={register}
                     login={login}/>
             }} />
-        <Route 
-          path={`/dash`}
-          render={() => {
-            return <Dash user={user}/>
-          }}/>
         <Route 
           path='/' 
           exact 

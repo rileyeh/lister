@@ -1,7 +1,9 @@
-module.exports = function(req, res, next) {
+function authUser(req, res, next) {
     if (req.session.user) {
         next()
     } else {
-        res.status(401).send('you need to be signed in to view this content')
+        res.sendStatus(401)
     }
 }
+
+module.exports = {authUser}
