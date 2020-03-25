@@ -4,7 +4,7 @@ import { ListContext } from '../../Context/lists'
 import Item from './Item'
 
 const List = ({ match: { params: {id} }}) => {
-    const { getAllItemsByList, items} = useContext(ListContext)
+    const { getAllItemsByList, markItemComplete, markItemIncomplete, items} = useContext(ListContext)
     const getItems = () => getAllItemsByList(id)
     useEffect(getItems, [])
     return (
@@ -12,7 +12,15 @@ const List = ({ match: { params: {id} }}) => {
             {
                 items
                 &&
-                items.map(item => <Item item={item} key={item.list_item_id}/>)
+                items.map(item => {
+                    return (
+                        <Item 
+                            item={item} 
+                            check={markItemComplete}
+                            uncheck={markItemIncomplete}
+                            key={item.list_item_id}/>
+                    )
+                })
             }
         </AuthWrapper>
     )

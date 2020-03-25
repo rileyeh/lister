@@ -7,18 +7,28 @@ const ListProvider = props => {
     const [lists, setLists] = useState([])
     const [items, setItems] = useState([])
 
-    const listsCallback = ({ data: lists }) => setLists({ lists })
+    const listCallback = ({ data: lists }) => setLists({ lists })
     const itemsCallback = ({ data: items }) => setItems({ items })
     const errorCallback = err => console.log(`!!!error!!!`, err)
 
     const methods = {
         getAllUserLists: id => {
             axios.get(`/api/lists/${id}`)
-                .then(listsCallback)
+                .then(listCallback)
                 .catch(errorCallback)
         },
         getAllItemsByList: id => {
             axios.get(`/api/items/${id}`)
+                .then(itemsCallback)
+                .catch(errorCallback)
+        },
+        markItemComplete: (id, list_id) => {
+            axios.put(`/api/items/${id}`, {list_id})
+                .then(itemsCallback)
+                .catch(errorCallback)
+        },
+        markItemIncomplete: (id, list_id) => {
+            axios.put(`/api/items/undo/${id}`, {list_id})
                 .then(itemsCallback)
                 .catch(errorCallback)
         }

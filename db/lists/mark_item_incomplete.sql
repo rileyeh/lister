@@ -1,5 +1,5 @@
 UPDATE list_items
-SET complete = true
+SET complete = false
 WHERE list_item_id = ${id};
 
 SELECT * FROM list_items

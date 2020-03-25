@@ -18,5 +18,27 @@ module.exports = {
         } catch (error) {
             res.status(409).send(`can't find that`)
         }
+    },
+    markItemComplete: async (req, res, next) => {
+        try {
+            const db = await req.app.get('db')
+            const { id } = req.params
+            const { list_id } = req.body
+            const items = await db.lists.mark_item_complete({id, list_id})
+            res.status(200).send(items)
+        } catch (error) {
+            res.status(417).send(`this just did not happen`)
+        }
+    },
+    markItemIncomplete: async (req, res, next) => {
+        try {
+            const db = await req.app.get('db')
+            const { id } = req.params
+            const { list_id } = req.body
+            const items = await db.lists.mark_item_incomplete({id, list_id})
+            res.status(200).send(items)
+        } catch (error) {
+            res.status(417).send(`this just did not happen`)
+        }
     }
 }
