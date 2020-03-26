@@ -7,4 +7,5 @@ export const Logo = styled.p`
     margin-left: 20px;
     color: ${secondary};
     font-weight: 800;
+    font-size: 24px;
 `

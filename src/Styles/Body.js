@@ -8,4 +8,6 @@ export const AppBody = styled.div`
     width: 100vw;
     min-height: calc(100vh - 75px);
     background-color: ${dark};
-    color: ${light};`
+    color: ${light};
+	font-family: 'Montserrat', sans-serif;
+`

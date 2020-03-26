@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from '../Styles/Link'
 
 const Login = ({ login, setForm }) => {
     const [username, setUsername] = useState('')
@@ -26,7 +27,7 @@ const Login = ({ login, setForm }) => {
                     placeholder='password' />
                 <button disabled={button}>login</button>
             </form>
-            <p>need to <span onClick={() => setForm('reg')}>register?</span></p>
+            <p>need to <Link onClick={() => setForm('reg')}>register?</Link></p>
         </div>
     )
 }

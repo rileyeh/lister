@@ -3,7 +3,7 @@ import { darkTheme } from './colors'
 
 const { primary, secondary } = darkTheme
 
-export const StyledLink = styled.p`
+export const Link = styled.span`
     color: ${secondary};
     text-decoration: none;
     margin-right: 20px;
