@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 const Register = ({ register, setForm }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [button, setButton] = useState(false)
 
     const submit = e => {
         e.preventDefault()
+        setButton(true)
         register({username, password})
     }
 
@@ -22,7 +24,7 @@ const Register = ({ register, setForm }) => {
                     value={password} 
                     onChange={e => setPassword(e.target.value)} 
                     placeholder='password' />
-                <button>register</button>
+                <button disabled={button}>register</button>
             </form>
             <p>looking to <span onClick={() => setForm('login')}>login?</span></p>
         </div>

@@ -31,10 +31,12 @@ app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/getuser', authCtrl.currentUser)
 
 /// List Endpoints ///
-app.get('/api/lists/:id', authUser, listCtrl.getListsByUser)
+app.get('/api/lists', authUser, listCtrl.getListsByUser)
+app.get('/api/lists/:id', authUser, listCtrl.getOneList)
 app.get('/api/items/:id', authUser, listCtrl.getAllItemsByList)
 app.put('/api/items/:id', authUser, listCtrl.markItemComplete)
 app.put('/api/items/undo/:id', authUser, listCtrl.markItemIncomplete)
+app.post('/api/lists', authUser, listCtrl.createList)
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))

@@ -6,14 +6,16 @@ const ListContext = React.createContext()
 const ListProvider = props => {
     const [lists, setLists] = useState([])
     const [items, setItems] = useState([])
+    const [currentList, setCurrent] = useState({})
 
     const listCallback = ({ data: lists }) => setLists({ lists })
     const itemsCallback = ({ data: items }) => setItems({ items })
+    const currentCallback = ({ data: currentList }) => setCurrent({ currentList })
     const errorCallback = err => console.log(`!!!error!!!`, err)
 
     const methods = {
         getAllUserLists: id => {
-            axios.get(`/api/lists/${id}`)
+            axios.get(`/api/lists`)
                 .then(listCallback)
                 .catch(errorCallback)
         },
@@ -31,11 +33,21 @@ const ListProvider = props => {
             axios.put(`/api/items/undo/${id}`, {list_id})
                 .then(itemsCallback)
                 .catch(errorCallback)
+        },
+        createList: name => {
+            axios.post('/api/lists', {name})
+                .then(currentCallback)
+                .catch(errorCallback)
+        },
+        getOneList: id => {
+            axios.get(`/api/lists/${id}`)
+                .then(currentCallback)
+                .catch(errorCallback)
         }
     }
 
     return (
-        <ListContext.Provider value={{ ...lists, ...items, ...methods }}>
+        <ListContext.Provider value={{ ...lists, ...items, ...currentList, ...methods }}>
             {props.children}
         </ListContext.Provider>
     )
