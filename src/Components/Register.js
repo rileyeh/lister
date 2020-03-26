@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from '../Styles/Link'
 
 const Register = ({ register, setForm }) => {
     const [username, setUsername] = useState('')
@@ -13,21 +12,31 @@ const Register = ({ register, setForm }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={submit}>
-                <input 
-                    type='text' 
-                    value={username} 
-                    onChange={e => setUsername(e.target.value)} 
-                    placeholder='username' />
-                <input 
-                    type='password' 
-                    value={password} 
-                    onChange={e => setPassword(e.target.value)} 
-                    placeholder='password' />
-                <button disabled={button}>register</button>
-            </form>
-            <p>looking to <Link onClick={() => setForm('login')}>login?</Link></p>
+        <div className='auth'>
+        <form onSubmit={submit} className='auth-form'>
+            <input
+                className='auth-input' 
+                type='text' 
+                value={username} 
+                onChange={e => setUsername(e.target.value)} 
+                placeholder='username' />
+            <input
+                className='auth-input' 
+                type='password' 
+                value={password} 
+                onChange={e => setPassword(e.target.value)} 
+                placeholder='password' />
+            <button 
+                className='outline-button' 
+                disabled={button}>
+                    register
+            </button>
+        </form>
+        <p>looking to
+            <span 
+                className='span-link' 
+                onClick={() => setForm('login')}>login</span>
+        ?</p>
         </div>
     )
 }

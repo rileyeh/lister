@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import './Auth.scss'
 import { Redirect } from 'react-router-dom'
-import Login from '../Components/Login'
-import Register from '../Components/Register'
+import Login from '../../Components/Login'
+import Register from '../../Components/Register'
 
 const Auth = ({ user, register, login}) => {
     const [form, setForm] = useState('login')
@@ -11,7 +12,6 @@ const Auth = ({ user, register, login}) => {
     :
     (
         <div>
-            <h1>auth</h1>
             {
                 form === 'login'
                 ?

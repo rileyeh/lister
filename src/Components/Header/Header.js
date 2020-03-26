@@ -1,21 +1,20 @@
 import React from 'react'
-import { Logo } from '../Styles/Logo'
-import { StyledHeader } from '../Styles/Header'
-import { StyledLink } from '../Styles/StyledLink'
+import './Header.scss'
+import { Link } from 'react-router-dom'
 
 const Header = ({ user, logout }) => {
     console.log('user in the header', user)
     return (
-        <StyledHeader>
-            <Logo>lister</Logo>
+        <header className='main-header'>
+            <p className='logo'>lister</p>
             {
                 user
                 ?
                 <button onClick={logout}>logout</button>
                 :
-                <StyledLink to='/login'>login/register</StyledLink>
+                <Link to='/login' className='styled-link'>login/register</Link>
             }
-        </StyledHeader>
+        </header>
     )
 }
 

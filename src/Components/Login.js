@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from '../Styles/Link'
 
 const Login = ({ login, setForm }) => {
     const [username, setUsername] = useState('')
@@ -13,21 +12,31 @@ const Login = ({ login, setForm }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={submit}>
-                <input 
+        <div className='auth'>
+            <form onSubmit={submit} className='auth-form'>
+                <input
+                    className='auth-input' 
                     type='text' 
                     value={username} 
                     onChange={e => setUsername(e.target.value)} 
                     placeholder='username' />
-                <input 
+                <input
+                    className='auth-input' 
                     type='password' 
                     value={password} 
                     onChange={e => setPassword(e.target.value)} 
                     placeholder='password' />
-                <button disabled={button}>login</button>
+                <button 
+                    className='outline-button' 
+                    disabled={button}>
+                        login
+                </button>
             </form>
-            <p>need to <Link onClick={() => setForm('reg')}>register?</Link></p>
+            <p>need to
+                <span 
+                    className='span-link' 
+                    onClick={() => setForm('reg')}>register</span>
+            ?</p>
         </div>
     )
 }

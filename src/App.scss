@@ -1,3 +1,5 @@
+@import './Styles/colors.scss', './Styles/mixins.scss';
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -45,4 +47,63 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+* { 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.app-body {
+	width: 100vw;
+    min-height: calc(100vh - 75px);
+    background-color: $dark;
+    color: $light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+	margin-left: 20px;
+	color: $secondary;
+	font-weight: 800;
+	font-size: 24px;
+}
+
+.outline-button {
+	width: 150px;
+    height: 35px;
+    font-size: 16px;
+    background-color: $dark;
+    color: $primary;
+    border: 3px solid $primary;
+    border-radius: 20px;
+    margin: 20px;
+
+    :hover {
+        background-color: $light; 
+        color: $secondary;
+        border: 3px solid $secondary;
+        transform: translateY(-3px);
+    }
+}
+
+.span-link {
+	color: $secondary;
+    text-decoration: none;
+
+    :hover {
+        color: $primary;
+    }
+}
+
+.styled-link {
+	color: $secondary;
+    text-decoration: none;
+    margin-right: 20px;
+
+    :hover {
+        color: $primary;
+    }
 }

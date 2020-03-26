@@ -1,0 +1,22 @@
+@import '../../Styles/colors.scss', '../../Styles/mixins.scss';
+
+.auth {
+    width: 300px;
+    height: 300px;
+    @include centered-flex-column;
+}
+
+.auth-input {
+    width: 150px;
+    min-height: 50px;
+    color: $light;
+    border: none;
+    border-bottom: 2px solid $light;
+    background: transparent;
+}
+
+.auth-form {
+    @include centered-flex-column;
+    height: 85%;
+    width: 100%;
+}
