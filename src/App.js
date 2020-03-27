@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 import Header from './Components/Header/Header'
 import Home from './Components/Home/Home'
 import Auth from './Containers/Auth/Auth'
-import Dash from './Containers/Dash'
+import Dash from './Containers/Dash/Dash'
 import List from './Components/List/index'
 
 const App = () => {

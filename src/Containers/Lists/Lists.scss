@@ -1,0 +1,5 @@
+@import '../../Styles/colors.scss', '../../Styles/mixins.scss';
+
+.lists-main {
+    @include card-display;
+}

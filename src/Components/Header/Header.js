@@ -3,14 +3,16 @@ import './Header.scss'
 import { Link } from 'react-router-dom'
 
 const Header = ({ user, logout }) => {
-    console.log('user in the header', user)
     return (
         <header className='main-header'>
-            <p className='logo'>lister</p>
+            <Link to='/' style={{textDecoration:'none'}}><p className='logo'>lister</p></Link>
             {
                 user
                 ?
-                <button onClick={logout}>logout</button>
+                <div className='right-links'>
+                <Link className='your-lists' to='/dash'>your lists</Link>
+                <button onClick={logout} className='logout-button'>logout</button>
+                </div>
                 :
                 <Link to='/login' className='styled-link'>login/register</Link>
             }

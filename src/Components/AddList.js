@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { ListContext } from '../Context/lists'
 
-const AddList = ({ setAdd }) => {
+const AddList = ({ setAddList }) => {
     const { createList, currentList } = useContext(ListContext)
     const [name, setName] = useState('')
     const submit = e => {
@@ -20,7 +20,7 @@ const AddList = ({ setAdd }) => {
                     value={name}/>
                 <button>next</button>
             </form>
-            <button onClick={() => setAdd(false)}>close</button>
+            <button onClick={() => setAddList(false)}>close</button>
         </div>
     )
 }

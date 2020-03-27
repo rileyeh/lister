@@ -1,0 +1,89 @@
+@import '../../Styles/colors.scss', '../../Styles/mixins.scss';
+
+.list-main {
+    @include centered-flex-column;
+    justify-content: flex-start;
+    width: 350px;
+    height: 600px;
+    background-color: $dark;
+    margin: 20px;
+    margin-top: 0;
+    border: 3px solid $primary;
+    border-radius: 20px;
+}
+
+.list-header {
+    height: 50px;
+    width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid $tertiary;
+}
+
+.list-name {
+    font-size: 24px;
+    color: $secondary;
+}
+
+.list-add {
+    font-size: 24px;
+    background: $dark;
+    border: 2px solid $light;
+    color: $light;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.item-main {
+    height: 35px;
+    width: 330px;
+    border-bottom: 1px solid $shadow;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.item-uncheck {
+    @include checkbox;
+    background-color: $dark;
+}
+
+.item-checked {
+    @include checkbox;
+    background-color: $primary;
+}
+
+.list-name-editor {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-name-input {
+    background-color: $dark;
+    border: none;
+    border-bottom: 2px solid $secondary;
+    color: $light;
+    font-size: 18px;
+    width: 60%;
+}
+
+.list-name-button {
+    width: 25px;
+    height: 25px;
+    background-color: $dark;
+    color: $secondary;
+    border: 2px solid $secondary;
+    border-radius: 50%;
+
+    &:hover {
+        color: $tertiary;
+        border: 2px solid $tertiary;
+    }
+}

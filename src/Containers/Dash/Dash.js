@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import Lists from './Lists'
-import AuthWrapper from './AuthWrapper'
-import AddList from '../Components/AddList'
-import AddListItem from '../Components/AddListItem'
+import './Dash.scss'
+import Lists from '../Lists/Lists'
+import AuthWrapper from '../AuthWrapper'
+import Adder from './Adder'
+import AddList from '../../Components/AddList'
+import AddListItem from '../../Components/AddListItem'
 
 const Dash = ({ user }) => {   
     const [addList, setAddList] = useState(false) 
@@ -10,15 +12,14 @@ const Dash = ({ user }) => {
 
     return(
         <AuthWrapper>
-            <div>
-                <h1>welcome to your dashboard</h1>
-                <button onClick={() => setAddList(true)}>add new list</button>
-                <button onClick={() => setAddListItem(true)}>add new item</button>
+            <div className='dash-main'>
+                <h1 className='dash-h1'>your lists</h1>
+                <Adder setAddList={setAddList} setAddListItem={setAddListItem}/>
                 <Lists user={user}/>
                 {
                     addList
                     &&
-                    <AddList setAddList={setAddList}/>
+                    <AddList setAddList={setAddList} setAddListItem={setAddListItem}/>
                 }
                 {
                     addListItem

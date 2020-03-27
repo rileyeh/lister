@@ -61,5 +61,17 @@ module.exports = {
         } catch (error) {
             res.status(400).send(`unable to make new list`)
         }
+    },
+    updateListName: async (req, res, next) => {
+        //name nad id
+        try {
+            const db = await req.app.get('db')
+            const { id } = req.params
+            const { name } = req.body
+            const newName = await db.lists.update_list_name({ id, name })
+            res.status(200).send(newName)
+        } catch (error) {
+            res.status(400).send('nope')
+        }
     }
 }

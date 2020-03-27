@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 const Login = ({ login, setForm }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [button, setButton] = useState(false)
+    const [disabled, setDisabled] = useState(false)
 
     const submit = e => {
         e.preventDefault()
-        setButton(true)
+        setDisabled(true)
         login({username, password})
     }
 
@@ -19,23 +19,25 @@ const Login = ({ login, setForm }) => {
                     type='text' 
                     value={username} 
                     onChange={e => setUsername(e.target.value)} 
-                    placeholder='username' />
+                    placeholder='username' 
+                    disabled={disabled}/>
                 <input
                     className='auth-input' 
                     type='password' 
                     value={password} 
                     onChange={e => setPassword(e.target.value)} 
-                    placeholder='password' />
+                    placeholder='password' 
+                    disabled={disabled}/>
                 <button 
                     className='outline-button' 
-                    disabled={button}>
-                        login
+                    disabled={disabled}>
+                        {disabled ? 'logging you in...' : 'login'}
                 </button>
             </form>
             <p>need to
                 <span 
                     className='span-link' 
-                    onClick={() => setForm('reg')}>register</span>
+                    onClick={() => setForm('reg')}> register</span>
             ?</p>
         </div>
     )

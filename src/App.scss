@@ -50,7 +50,8 @@ table {
 }
 
 * { 
-    font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	position: relative;
 }
 
 .app-body {
@@ -81,12 +82,17 @@ table {
     border-radius: 20px;
     margin: 20px;
 
-    :hover {
+    &:hover {
         background-color: $light; 
         color: $secondary;
         border: 3px solid $secondary;
-        transform: translateY(-3px);
-    }
+	}
+	
+	&:disabled {
+		border: 3px solid $tertiary;
+		color: $tertiary;
+		background-color: $dark;
+	}
 }
 
 .span-link {
