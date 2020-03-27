@@ -1,0 +1,51 @@
+@import '../../Styles/colors.scss', '../../Styles/mixins.scss';
+
+.add-list-back {
+    background-color: rgba(235, 235, 235, .5);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: -75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-list-modal {
+    width: 600px;
+    height: 150px;
+    background-color: $dark;
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.add-list-title {
+    text-align: center;
+}
+
+.add-list-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;    
+}
+
+.add-list-input {
+    width: 250px;
+    height: 40px;
+    background-color: $dark;
+    border: none;
+    border-bottom: 2px solid $light;
+    color: $secondary;
+    font-size: 20px;
+}
+
+.add-list-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    @include x-button;
+}

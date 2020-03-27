@@ -3,7 +3,7 @@ import './Dash.scss'
 import Lists from '../Lists/Lists'
 import AuthWrapper from '../AuthWrapper'
 import Adder from './Adder'
-import AddList from '../../Components/AddList'
+import AddList from '../../Components/AddList/AddList'
 import AddListItem from '../../Components/AddListItem'
 
 const Dash = ({ user }) => {   
