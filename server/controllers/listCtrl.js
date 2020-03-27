@@ -63,7 +63,6 @@ module.exports = {
         }
     },
     updateListName: async (req, res, next) => {
-        //name nad id
         try {
             const db = await req.app.get('db')
             const { id } = req.params
@@ -72,6 +71,17 @@ module.exports = {
             res.status(200).send(newName)
         } catch (error) {
             res.status(400).send('nope')
+        }
+    },
+    createListItem: async (req, res, next) => {
+        try {
+            const db = await req.app.get('db')
+            const { id: list_id } = req.params
+            const { content } = req.body
+            const list = await db.lists.create_list_item({ list_id, content })
+            res.status(200).send(list)
+        } catch (error) {
+            res.status(400).send('not happening')
         }
     }
 }

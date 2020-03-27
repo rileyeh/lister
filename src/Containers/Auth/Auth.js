@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import Login from '../../Components/Login'
 import Register from '../../Components/Register'
 
-const Auth = ({ user, register, login}) => {
+const Auth = ({ user, register, login }) => {
     const [form, setForm] = useState('login')
 
     return user ? 

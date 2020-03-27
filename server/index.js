@@ -38,6 +38,7 @@ app.put('/api/items/:id', authUser, listCtrl.markItemComplete)
 app.put('/api/items/undo/:id', authUser, listCtrl.markItemIncomplete)
 app.post('/api/lists', authUser, listCtrl.createList)
 app.put('/api/lists/name/:id', authUser, listCtrl.updateListName)
+app.post('/api/items/:id', authUser, listCtrl.createListItem)
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))

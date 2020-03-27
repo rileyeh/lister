@@ -4,7 +4,7 @@ import { ListContext } from '../../Context/lists'
 // import { Link } from 'react-router-dom'
 import List from '../../Components/List/index'
 
-const Lists = ({ user: { user_id: id } }) => {
+const Lists = ({ user: { user_id: id }, addToList }) => {
     const { getAllUserLists, lists } = useContext(ListContext)
     const getLists = () => getAllUserLists(id)
     useEffect(getLists, [])
@@ -13,11 +13,12 @@ const Lists = ({ user: { user_id: id } }) => {
             {
                 lists
                 &&
-                lists.map(({list_id, name}) => {
+                lists.map(({list_id}) => {
                     return (
                         <List
                             id={list_id} 
-                            key={list_id}/>
+                            key={list_id}
+                            addToList={addToList}/>
                     )
                 })
             }

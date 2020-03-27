@@ -3,19 +3,17 @@ import AuthWrapper from '../../Containers/AuthWrapper'
 import { ListContext } from '../../Context/lists'
 import Item from './Item'
 import Loading from '../Loading'
-import AddListItem from '../AddListItem'
 import './List.scss'
 import axios from 'axios'
 import EditableName from './EditableName'
 
-const List = ({ id }) => {
+const List = ({ id, addToList }) => {
     const { 
         markItemComplete, 
         markItemIncomplete,
         lists
         } = useContext(ListContext)
 
-    const [add, setAdd] = useState(false)
     const [currentList, setCurrentList] = useState([])
     const [items, setItems] = useState([])
 
@@ -31,7 +29,7 @@ const List = ({ id }) => {
             <div className='list-main'>
                 <header className='list-header'>
                     <EditableName list={currentList}/>
-                    <button className='list-add' onClick={() => setAdd(true)}>+</button>
+                    <button className='list-add' onClick={() => addToList(id)}>+</button>
                 </header>
                 <section className='list-items'>{
                     items
@@ -47,11 +45,6 @@ const List = ({ id }) => {
                     })
                 }</section>
             </div>
-            {
-                add
-                &&
-                <AddListItem setAdd={setAdd}/>
-            }
         </AuthWrapper>
     ) : <Loading/>
 }

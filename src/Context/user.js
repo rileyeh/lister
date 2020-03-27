@@ -16,7 +16,6 @@ const UserProvider = props => {
                 .catch(errorCallback)
         },
         login: userInfo => {
-            console.log(user)
             axios.post(`/auth/login`, userInfo)
                 .then(successCallback)
                 .catch(errorCallback)

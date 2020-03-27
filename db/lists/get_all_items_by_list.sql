@@ -8,4 +8,5 @@ SELECT
 FROM 
     list_items li
 INNER JOIN list l ON li.list_id = l.list_id
-WHERE l.list_id = $1;
+WHERE l.list_id = $1
+ORDER BY li.list_item_id;

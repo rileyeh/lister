@@ -8,6 +8,7 @@ const ListProvider = props => {
     const [items, setItems] = useState([])
     const [currentList, setCurrent] = useState({})
 
+    //change these now that i'm using hooks
     const listCallback = ({ data: lists }) => setLists({ lists })
     const itemsCallback = ({ data: items }) => setItems({ items })
     const currentCallback = ({ data: currentList }) => setCurrent({ currentList })
@@ -19,11 +20,11 @@ const ListProvider = props => {
                 .then(listCallback)
                 .catch(errorCallback)
         },
-        // getAllItemsByList: id => {
-        //     axios.get(`/api/items/${id}`)
-        //         .then(itemsCallback)
-        //         .catch(errorCallback)
-        // },
+        getAllItemsByList: id => {
+            axios.get(`/api/items/${id}`)
+                .then(itemsCallback)
+                .catch(errorCallback)
+        },
         markItemComplete: (id, list_id) => {
             axios.put(`/api/items/${id}`, {list_id})
                 .then(itemsCallback)
@@ -38,13 +39,17 @@ const ListProvider = props => {
             axios.post('/api/lists', {name})
                 .then(currentCallback)
                 .catch(errorCallback)
+         },
+        getOneList: id => {
+            axios.get(`/api/lists/${id}`)
+                .then(currentCallback)
+                .catch(errorCallback)
+        },
+        createItem: (id, content) => {
+            axios.post(`/api/items/${id}`, { content })
+                .then(currentCallback)
+                .catch(errorCallback)
         }
-        // ,
-        // getOneList: id => {
-        //     axios.get(`/api/lists/${id}`)
-        //         .then(currentCallback)
-        //         .catch(errorCallback)
-        // }
     }
 
     return (
