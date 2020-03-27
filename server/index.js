@@ -14,6 +14,7 @@ massive(CONNECTION_STRING).then(db => {
     console.log('db is connected')
 }).catch(err => console.log('cannot connect to database', err))
 
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,
