@@ -14,17 +14,23 @@ const Adder = ({setAddList, setAddListItem}) => {
         setAddListItem(true)
     }
 
-    return menu ? (
-        <div className='adder-open'>
-            <button onClick={openAddList}>add new list</button>
-            <button onClick={openAddListItem}>add new item</button>
-            <button onClick={() => setMenu(false)}>x</button>
-        </div>
-    ) : ( 
-        <button
-            className='adder' 
-            onClick={() => setAddList(true)}>
-        +</button>
+    return (
+        <>
+        {
+            menu ? (
+                <div className='adder-open'>
+                    <button onClick={openAddList}>add new list</button>
+                    <button onClick={openAddListItem}>add new item</button>
+                    <button onClick={() => setMenu(false)}>x</button>
+                </div>
+            ) : ( 
+                <button
+                    className='adder' 
+                    onClick={() => setAddList(true)}>
+                +</button>
+            )
+        }
+        </>
     )
 }
 

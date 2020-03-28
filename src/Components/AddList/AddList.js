@@ -3,13 +3,14 @@ import './AddList.scss'
 import { ListContext } from '../../Context/lists'
 
 const AddList = ({ setAddList, setAddListItem }) => {
-    const { createList } = useContext(ListContext)
+    const { createList, getAllUserLists } = useContext(ListContext)
     const [name, setName] = useState('')
     const submit = e => {
         e.preventDefault()
         createList(name)
         setAddList(false)
         setAddListItem(true)
+        getAllUserLists()
     }
 
     return (

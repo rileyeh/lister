@@ -7,19 +7,25 @@ import Register from '../../Components/Register'
 const Auth = ({ user, register, login }) => {
     const [form, setForm] = useState('login')
 
-    return user ? 
-    <Redirect to='/dash'/>
-    :
-    (
-        <div>
-            {
-                form === 'login'
-                ?
-                <Login login={login} setForm={setForm}/>
-                :
-                <Register register={register} setForm={setForm}/>
-            }
-        </div>    
+    return (
+        <>
+        {
+            user ? 
+            <Redirect to='/dash'/>
+            :
+            (
+                <div>
+                    {
+                        form === 'login'
+                        ?
+                        <Login login={login} setForm={setForm}/>
+                        :
+                        <Register register={register} setForm={setForm}/>
+                    }
+                </div>    
+            )
+        }
+        </>
     )
 }
 

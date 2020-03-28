@@ -26,18 +26,24 @@ const EditableName = ({ list: { list_id: id, name: listName, user_id } }) => {
         setEdit(false)
     }
 
-    return edit ? (
-        <div className='list-name-editor'>
-            <input 
-                type='text' 
-                value={name} 
-                className='list-name-input'
-                onChange={e => setName(e.target.value)}/>
-            <button className='list-name-button' onClick={saveName}>&#10003;</button>
-            <button className='list-name-button' onClick={cancel}>X</button>
-        </div>
-    ) : (
-        <h2 className='list-name' onClick={() => setEdit(true)}>{name}</h2>
+    return (
+        <>
+        {
+            edit ? (
+                <div className='list-name-editor'>
+                    <input 
+                        type='text' 
+                        value={name} 
+                        className='list-name-input'
+                        onChange={e => setName(e.target.value)}/>
+                    <button className='list-name-button' onClick={saveName}>&#10003;</button>
+                    <button className='list-name-button' onClick={cancel}>X</button>
+                </div>
+            ) : (
+                <h2 className='list-name' onClick={() => setEdit(true)}>{name}</h2>
+            )
+        }
+        </>
     )
 }
 

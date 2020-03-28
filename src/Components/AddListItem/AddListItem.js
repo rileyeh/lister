@@ -4,7 +4,7 @@ import './AddListItem.scss'
 import axios from 'axios'
 
 const AddListItem = ({ setAddListItem }) => {
-    const { currentList, createItem } = useContext(ListContext)
+    const { currentList, createItem, getAllUserLists } = useContext(ListContext)
     const [item, setItem] = useState('')
     const [items, setItems] = useState([])
 
@@ -15,6 +15,7 @@ const AddListItem = ({ setAddListItem }) => {
             createItem(currentList.list_id, item)
         }
         setItem('')
+        getAllUserLists()
     }
 
     useEffect(() => {

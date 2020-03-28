@@ -24,29 +24,35 @@ const List = ({ id, addToList }) => {
 
     useEffect(effectCallback, [lists])
 
-    return currentList ? (
-        <AuthWrapper>
-            <div className='list-main'>
-                <header className='list-header'>
-                    <EditableName list={currentList}/>
-                    <button className='list-add' onClick={() => addToList(id)}>+</button>
-                </header>
-                <section className='list-items'>{
-                    items
-                    &&
-                    items.map(item => {
-                        return (
-                            <Item 
-                                item={item} 
-                                check={markItemComplete}
-                                uncheck={markItemIncomplete}
-                                key={item.list_item_id}/>
-                        )
-                    })
-                }</section>
-            </div>
-        </AuthWrapper>
-    ) : <Loading/>
+    return (
+        <>
+        {
+            currentList ? (
+                <AuthWrapper>
+                    <div className='list-main'>
+                        <header className='list-header'>
+                            <EditableName list={currentList}/>
+                            <button className='list-add' onClick={() => addToList(id)}>+</button>
+                        </header>
+                        <section className='list-items'>{
+                            items
+                            &&
+                            items.map(item => {
+                                return (
+                                    <Item 
+                                        item={item} 
+                                        check={markItemComplete}
+                                        uncheck={markItemIncomplete}
+                                        key={item.list_item_id}/>
+                                )
+                            })
+                        }</section>
+                    </div>
+                </AuthWrapper>
+            ) : <Loading/>
+        }
+        </>
+    )
 }
 
 export default List

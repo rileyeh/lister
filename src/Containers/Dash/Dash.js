@@ -18,7 +18,7 @@ const Dash = ({ user }) => {
         setAddListItem(true)
     }
 
-    return(
+    return (
         <AuthWrapper>
             <div className='dash-main'>
                 <h1 className='dash-h1'>your lists</h1>
