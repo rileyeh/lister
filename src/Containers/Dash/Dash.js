@@ -26,13 +26,17 @@ const Dash = ({ user }) => {
                 <Lists user={user} addToList={addToList}/>
                 {
                     addList
-                    &&
+                    ?
                     <AddList setAddList={setAddList} setAddListItem={setAddListItem}/>
+                    :
+                    null
                 }
                 {
                     addListItem
-                    &&
+                    ?
                     <AddListItem setAddListItem={setAddListItem} setAddList={setAddList}/>
+                    :
+                    null
                 }
             </div>
         </AuthWrapper>

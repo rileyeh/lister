@@ -12,7 +12,7 @@ const Lists = ({ user: { user_id: id }, addToList }) => {
         <div className='lists-main'>
             {
                 lists
-                &&
+                ?
                 lists.map(({list_id}) => {
                     return (
                         <List
@@ -21,6 +21,8 @@ const Lists = ({ user: { user_id: id }, addToList }) => {
                             addToList={addToList}/>
                     )
                 })
+                :
+                null
             }
         </div>
     )
