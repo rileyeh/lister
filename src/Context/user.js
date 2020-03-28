@@ -32,8 +32,8 @@ const UserProvider = props => {
         }
     }
 
+    //at some point, i want to test what happens when you remove props.children?
     return (
-        //at some point, i want to test what happens when you remove props.children?
         <UserContext.Provider value={{ ...user, ...methods }}>
             {props.children}
         </UserContext.Provider>
