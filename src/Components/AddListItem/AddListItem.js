@@ -32,7 +32,7 @@ const AddListItem = ({ setAddListItem }) => {
                 <h2 className='add-item-title'>add items to your list</h2>
                 <div className='items-container'>{
                     items
-                    &&
+                    ?
                     items.map(item => {
                         return (
                             <div key={item.list_item_id} className='add-item-item'>
@@ -41,6 +41,8 @@ const AddListItem = ({ setAddListItem }) => {
                             </div>
                         )
                     })
+                    :
+                    null
                 }</div>
                 <form onSubmit={submit} className='add-list-form'>
                     <input 

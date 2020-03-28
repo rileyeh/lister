@@ -36,7 +36,7 @@ const List = ({ id, addToList }) => {
                         </header>
                         <section className='list-items'>{
                             items
-                            &&
+                            ?
                             items.map(item => {
                                 return (
                                     <Item 
@@ -46,6 +46,8 @@ const List = ({ id, addToList }) => {
                                         key={item.list_item_id}/>
                                 )
                             })
+                            :
+                            null
                         }</section>
                     </div>
                 </AuthWrapper>
