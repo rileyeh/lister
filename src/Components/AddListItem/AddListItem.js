@@ -8,7 +8,8 @@ const AddListItem = ({ setAddListItem }) => {
     const [item, setItem] = useState('')
     const [items, setItems] = useState([])
 
-    const submit = () => {
+    const submit = e => {
+        e.preventDefault()
         if (currentList && currentList.length) {
             createItem(currentList[0].list_id, item)
         } else if (currentList && !currentList.length) {
