@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express')
-const path = require('path')
 const app = express()
 const massive = require('massive')
 const session = require('express-session')
@@ -25,10 +24,6 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 365
     }
 }))
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-  });
 
 /// Auth Endpoints ///
 app.post('/auth/register', authCtrl.register)

@@ -8,8 +8,7 @@ const ListProvider = props => {
     const [items, setItems] = useState([])
     const [currentList, setCurrent] = useState({})
 
-    //change these now that i'm using hooks
-    const listCallback = ({ data: lists }) => setLists({ lists })
+    const listCallback = ({ data: lists  }) => setLists({ lists })
     const itemsCallback = ({ data: items }) => setItems({ items })
     const currentCallback = ({ data: currentList }) => setCurrent({ currentList })
     const errorCallback = err => console.log(`!!!error!!!`, err)

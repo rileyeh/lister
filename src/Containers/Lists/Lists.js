@@ -8,6 +8,7 @@ const Lists = ({ user: { user_id: id }, addToList }) => {
     const { getAllUserLists, lists } = useContext(ListContext)
     const getLists = () => getAllUserLists(id)
     useEffect(getLists, [])
+    console.log(lists)
     return (
         <div className='lists-main'>
             {
