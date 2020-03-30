@@ -18,9 +18,13 @@ const Auth = ({ user, register, login }) => {
                     {
                         form === 'login'
                         ?
-                        <Login login={login} setForm={setForm}/>
+                        <Login 
+                            login={login} 
+                            setForm={setForm} />
                         :
-                        <Register register={register} setForm={setForm}/>
+                        <Register 
+                            register={register} 
+                            setForm={setForm} />
                     }
                 </div>    
             )
