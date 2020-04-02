@@ -81,7 +81,19 @@ module.exports = {
             const list = await db.lists.create_list_item({ list_id, content })
             res.status(200).send(list)
         } catch (error) {
+            console.log(error)
             res.status(400).send('not happening')
+        }
+    },
+    deleteListItem: async (req, res, next) => {
+        try {
+            const db = await req.app.get('db')
+            const { id, list } = req.params
+            const updatedList = await db.lists.delete_list_item({ id, list })
+            res.status(200).send(updatedList)
+        } catch (error) {
+            console.log(error)
+            res.sendStatus(400)
         }
     }
 }

@@ -48,6 +48,11 @@ const ListProvider = props => {
             axios.post(`/api/items/${id}`, { content })
                 .then(currentCallback)
                 .catch(errorCallback)
+        },
+        deleteItem: (id, list) => {
+            axios.delete(`/api/items/${list}/${id}`)
+                .then(currentCallback)
+                .catch(errorCallback)
         }
     }
 

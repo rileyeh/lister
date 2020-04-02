@@ -11,18 +11,23 @@ const List = ({ id, addToList }) => {
     const { 
         markItemComplete, 
         markItemIncomplete,
-        lists
+        lists, 
+        deleteItem, 
+        currentList: storeList
         } = useContext(ListContext)
 
     const [currentList, setCurrentList] = useState([])
     const [items, setItems] = useState([])
 
+    //can i move these to the context store?
     const effectCallback = () => {
         axios.get(`/api/lists/${id}`).then(({ data }) => setCurrentList(data))
         axios.get(`/api/items/${id}`).then(({ data }) => setItems(data))
     }
 
     useEffect(effectCallback, [lists])
+
+    console.log(123123213131, storeList)
 
     return (
         <>
@@ -43,6 +48,7 @@ const List = ({ id, addToList }) => {
                                         item={item} 
                                         check={markItemComplete}
                                         uncheck={markItemIncomplete}
+                                        deleteItem={deleteItem}
                                         key={item.list_item_id}/>
                                 )
                             })
