@@ -9,7 +9,10 @@ let { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 let authCtrl = require('./controllers/authCtrl')
 let listCtrl = require('./controllers/listCtrl')
 
-massive(CONNECTION_STRING).then(db => {
+massive({
+    connectionString: CONNECTION_STRING,
+    ssl: {rejectUnauthorized: false}
+    }).then(db => {
     app.set('db', db)
     console.log('db is connected')
 }).catch(err => console.log('cannot connect to database', err))
